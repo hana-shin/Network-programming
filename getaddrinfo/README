@@ -1,0 +1,11 @@
+[root@server getaddrinfo]# dig ntp.nict.jp +short
+133.243.238.163
+133.243.238.243
+133.243.238.244
+133.243.238.164
+
+[root@server getaddrinfo]# ./getaddrinfo ntp.nict.jp
+ip addres: 133.243.238.163
+ip addres: 133.243.238.164
+ip addres: 133.243.238.244
+ip addres: 133.243.238.243
