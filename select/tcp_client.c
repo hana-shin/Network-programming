@@ -30,8 +30,7 @@ int main()
         servaddr.sin_port = htons(PORT);
         servaddr.sin_addr.s_addr = inet_addr("127.0.0.1");
 
-        if (connect(sockfd, (struct sockaddr*)&servaddr,
-                                                        sizeof(servaddr)) < 0) {
+        if (connect(sockfd, (struct sockaddr*)&servaddr, sizeof(servaddr)) < 0) {
                 printf("\n Error : Connect Failed \n");
         }
 
