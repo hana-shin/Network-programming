@@ -77,6 +77,6 @@ int main()
             puts(buffer);
             sendto(udpfd, (const char*)message, sizeof(buffer), 0,
             (struct sockaddr*)&cliaddr, sizeof(cliaddr));
-                    }
+        }
     }
 }
