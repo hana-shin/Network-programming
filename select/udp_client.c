@@ -8,6 +8,7 @@
 #include <arpa/inet.h>
 
 #define PORT 11111
+#define SV "192.168.3.20"
 #define MAXLINE 1024
 int main()
 {
@@ -27,7 +28,8 @@ int main()
 
     servaddr.sin_family = AF_INET;
     servaddr.sin_port = htons(PORT);
-    servaddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+    //servaddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+    servaddr.sin_addr.s_addr = inet_addr(SV);
     sendto(sockfd, (const char*)message, strlen(message),0, (const struct sockaddr*)&servaddr,sizeof(servaddr));
 
     printf("Message from server: ");

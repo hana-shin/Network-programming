@@ -8,6 +8,7 @@
 #include <arpa/inet.h>
 
 #define PORT 11111
+#define SV "192.168.3.20"
 #define MAXLINE 1024
 
 int main()
@@ -24,7 +25,7 @@ int main()
     memset(&servaddr, 0, sizeof(servaddr));
     servaddr.sin_family = AF_INET;
     servaddr.sin_port = htons(PORT);
-    servaddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+    servaddr.sin_addr.s_addr = inet_addr(SV);
 
     if (connect(sockfd, (struct sockaddr*)&servaddr, sizeof(servaddr)) < 0) {
         printf("\n Error : Connect Failed \n");
