@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 
     if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
         printf("socket creation failed");
-        return 1;
+        exit(1);
     }
 
     memset(&servaddr, 0, sizeof(servaddr));
@@ -22,6 +22,7 @@ int main(int argc, char *argv[])
 
     if (connect(sockfd, (struct sockaddr*)&servaddr, sizeof(servaddr)) < 0) {
         printf("\n Error : Connect Failed \n");
+        exit(1);
     }
 
     memset(buffer, 0, sizeof(buffer));
@@ -31,5 +32,5 @@ int main(int argc, char *argv[])
     read(sockfd, buffer, sizeof(buffer));
     puts(buffer);
     close(sockfd);
-    return 0;
+    exit(0);
 }

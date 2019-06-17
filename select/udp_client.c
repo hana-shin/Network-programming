@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 
     if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
         printf("socket creation failed");
-        exit(0);
+        exit(1);
     }
 
     memset(&servaddr, 0, sizeof(servaddr));
@@ -31,5 +31,5 @@ int main(int argc, char *argv[])
     printf("%zd byes received\n", n);
     puts(buffer);
     close(sockfd);
-    return 0;
+    exit(0);
 }
