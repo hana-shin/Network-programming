@@ -51,7 +51,9 @@ int main(int argc, char *argv[])
             if ((childpid = fork()) == 0) {
                 close(listenfd);
                 bzero(buffer, sizeof(buffer));
+
                 printf("Message From TCP client: ");
+
                 read(connfd, buffer, sizeof(buffer));
                 puts(buffer);
                 write(connfd, (const char*)message, sizeof(buffer));
@@ -64,7 +66,9 @@ int main(int argc, char *argv[])
         if (FD_ISSET(udpfd, &rset)) {
             len = sizeof(cliaddr);
             bzero(buffer, sizeof(buffer));
+
             printf("\nMessage from UDP client: ");
+
             n = recvfrom(udpfd, buffer, sizeof(buffer), 0, (struct sockaddr*)&cliaddr, &len);
             printf("%zd bytes received\n", n);
 
