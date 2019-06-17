@@ -7,7 +7,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-#define PORT 5000
+#define PORT 11111
 #define MAXLINE 1024
 
 int main()

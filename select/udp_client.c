@@ -8,7 +8,7 @@
 #include <string.h>
 #include <unistd.h>
 
-#define PORT 5000
+#define PORT 11111
 #define MAXLINE 1024
 int main()
 {
