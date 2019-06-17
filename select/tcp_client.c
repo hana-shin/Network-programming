@@ -15,11 +15,10 @@ int main()
     int sockfd;
     char buffer[MAXLINE];
     struct sockaddr_in servaddr;
-    int n;
 
     if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
-    printf("socket creation failed");
-        exit(0);
+        printf("socket creation failed");
+        return 1;
     }
 
     memset(&servaddr, 0, sizeof(servaddr));
