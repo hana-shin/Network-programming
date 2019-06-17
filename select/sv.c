@@ -23,7 +23,6 @@ int main(int argc, char *argv[])
     socklen_t len;
     struct sockaddr_in cliaddr, servaddr;
     char* message = "Hello Client";
-    void sig_chld(int);
 
     listenfd = socket(AF_INET, SOCK_STREAM, 0);
     bzero(&servaddr, sizeof(servaddr));
