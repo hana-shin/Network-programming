@@ -15,7 +15,8 @@ int main()
     char buffer[MAXLINE];
     char* message = "Hello Server";
     struct sockaddr_in servaddr;
-    int n, len;
+    ssize_t n;
+    socklen_t len;
 
     if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
         printf("socket creation failed");
@@ -31,7 +32,7 @@ int main()
 
     printf("Message from server: ");
     n = recvfrom(sockfd, (char*)buffer, MAXLINE, 0, (struct sockaddr*)&servaddr, &len);
-    printf("%d byes received\n", n);
+    printf("%zd byes received\n", n);
     puts(buffer);
     close(sockfd);
     return 0;
