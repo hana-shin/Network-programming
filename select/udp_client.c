@@ -1,12 +1,11 @@
-#include <arpa/inet.h>
-#include <netinet/in.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <strings.h>
-#include <sys/socket.h>
-#include <sys/types.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 
 #define PORT 11111
 #define MAXLINE 1024
