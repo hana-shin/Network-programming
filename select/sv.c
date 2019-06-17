@@ -74,6 +74,8 @@ int main()
             bzero(buffer, sizeof(buffer));
             printf("\nMessage from UDP client: ");
             n = recvfrom(udpfd, buffer, sizeof(buffer), 0, (struct sockaddr*)&cliaddr, &len);
+            printf("%zd bytes received\n", n);
+
             puts(buffer);
             sendto(udpfd, (const char*)message, sizeof(buffer), 0,
             (struct sockaddr*)&cliaddr, sizeof(cliaddr));

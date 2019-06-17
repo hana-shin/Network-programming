@@ -31,6 +31,7 @@ int main()
 
     printf("Message from server: ");
     n = recvfrom(sockfd, (char*)buffer, MAXLINE, 0, (struct sockaddr*)&servaddr, &len);
+    printf("%d byes received\n", n);
     puts(buffer);
     close(sockfd);
     return 0;
