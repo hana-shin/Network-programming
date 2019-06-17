@@ -8,7 +8,7 @@
 #include <arpa/inet.h>
 #include "def.h"
 
-int main()
+int main(int argc, char *argv[])
 {
     int sockfd;
     char buffer[MAXLINE];
