@@ -14,13 +14,9 @@ int main(int argc, char *argv[])
     ssize_t n;
     socklen_t len;
 
-    if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
-        printf("socket creation failed");
-        exit(1);
-    }
+    sockfd = socket(AF_INET, SOCK_DGRAM, 0);
 
     memset(&servaddr, 0, sizeof(servaddr));
-
     servaddr.sin_family = AF_INET;
     servaddr.sin_port = htons(PORT);
     servaddr.sin_addr.s_addr = inet_addr(SV);
