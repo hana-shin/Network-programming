@@ -6,10 +6,8 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include "def.h"
 
-#define PORT 11111
-#define SV "192.168.3.20"
-#define MAXLINE 1024
 int main()
 {
     int sockfd;
