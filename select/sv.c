@@ -3,9 +3,7 @@
 #include <strings.h>
 #include <unistd.h>
 #include <netinet/in.h>
-
-#define PORT 11111
-#define MAXLINE 1024
+#include "def.h"
 
 int max(int x, int y)
 {
@@ -15,7 +13,7 @@ int max(int x, int y)
         return y;
 }
 
-int main()
+int main(int argc, char *argv[])
 {
     int listenfd, connfd, udpfd, maxfdp1;
     char buffer[MAXLINE];
