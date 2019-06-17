@@ -14,9 +14,8 @@ int main()
 {
     int sockfd;
     char buffer[MAXLINE];
-    char* message = "Hello Server";
     struct sockaddr_in servaddr;
-    int n, len;
+    int n;
 
     if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
     printf("socket creation failed");
@@ -39,4 +38,5 @@ int main()
     read(sockfd, buffer, sizeof(buffer));
     puts(buffer);
     close(sockfd);
+    return 0;
 }
