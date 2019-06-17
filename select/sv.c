@@ -2,12 +2,7 @@
 #include <stdlib.h>
 #include <strings.h>
 #include <unistd.h>
-#include <errno.h>
-#include <signal.h>
-#include <sys/socket.h>
-#include <sys/types.h>
 #include <netinet/in.h>
-#include <arpa/inet.h>
 
 #define PORT 11111
 #define MAXLINE 1024
