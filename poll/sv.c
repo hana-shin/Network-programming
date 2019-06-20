@@ -16,8 +16,8 @@ int main(int argc, char *argv[])
   addr1.sin_family = AF_INET;
   addr2.sin_family = AF_INET;
 
-  inet_pton(AF_INET, "127.0.0.1", &addr1.sin_addr.s_addr);
-  inet_pton(AF_INET, "127.0.0.1", &addr2.sin_addr.s_addr);
+  inet_pton(AF_INET, "192.168.3.20", &addr1.sin_addr.s_addr);
+  inet_pton(AF_INET, "192.168.3.20", &addr2.sin_addr.s_addr);
 
   addr1.sin_port = htons(11111);
   addr2.sin_port = htons(22222);
