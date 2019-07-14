@@ -1,4 +1,3 @@
-
 obj-m := netlink_module.o
 
 KDIR    := /lib/modules/$(shell uname -r)/build
