@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
   bind(sock, (struct sockaddr *)&addr, sizeof(addr));
 
   memset(&mreq, 0, sizeof(mreq));
-  mreq.imr_interface.s_addr = inet_addr("192.168.122.200");
+  mreq.imr_interface.s_addr = inet_addr("192.168.122.100");
   mreq.imr_multiaddr.s_addr = inet_addr("239.0.0.100");
 
   if (setsockopt(sock, IPPROTO_IP, IP_ADD_MEMBERSHIP, (char *)&mreq, sizeof(mreq)) != 0) {
