@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
   addr.sin_port = htons(11111);
   addr.sin_addr.s_addr = inet_addr("239.0.0.100");
 
-  src_addr.sin_addr.s_addr = inet_addr("192.168.3.50");
+  src_addr.sin_addr.s_addr = inet_addr("192.168.3.30");
   if (setsockopt(sock, IPPROTO_IP, IP_MULTICAST_IF, (char *)&src_addr.sin_addr.s_addr, sizeof(ipaddr)) != 0) {
     perror("setsockopt");
     return 1;
