@@ -2,7 +2,6 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/types.h>
-#include <sys/socket.h>
 #include <netinet/in.h>
 
 int main(int argc, char *argv[])
@@ -19,10 +18,7 @@ int main(int argc, char *argv[])
     sv.sin_port = htons(11111);
     sv.sin_addr.s_addr = INADDR_ANY;
 
-    if(bind(lfd, (struct sockaddr *)&sv, sizeof(sv)) == -1){
-        perror("bind");
-        _exit(1);
-    }
+    bind(lfd, (struct sockaddr *)&sv, sizeof(sv));
     listen(lfd, 5);
     memset(buf, 0, sizeof(buf));
     len = sizeof(cl);
@@ -36,9 +32,9 @@ int main(int argc, char *argv[])
             close(cfd);
         else {
             perror("read");
-            _exit(1);
+            return 1;
         }
     }
     close(lfd);
-    _exit(0);
+    return 0;
 }
