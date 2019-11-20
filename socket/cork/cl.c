@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     struct sockaddr_in server;
     int sock, i, val;
     ssize_t n;
-    char buf[100];
+    char buf[10]="0123456789";
 
     sock = socket(AF_INET, SOCK_STREAM, 0);
 
