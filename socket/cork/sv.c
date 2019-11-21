@@ -32,6 +32,7 @@ int main(int argc, char *argv[])
             fprintf(stderr,"%zd, %s\n", n, buf);
         else if(n == 0)  //EOF
             close(cfd);
+            return 0;
         else {
             perror("read");
             return 1;
