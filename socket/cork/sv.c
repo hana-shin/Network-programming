@@ -1,10 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
-#include <sys/types.h>
-#include <sys/socket.h>
 #include <netinet/in.h>
-
 
 int main(int argc, char *argv[])
 {
@@ -30,9 +27,10 @@ int main(int argc, char *argv[])
         n = read(cfd, buf, sizeof(buf));
         if(n > 0)
             fprintf(stderr,"%zd, %s\n", n, buf);
-        else if(n == 0)  //EOF
+        else if(n == 0) { //EOF
             close(cfd);
             return 0;
+        }
         else {
             perror("read");
             return 1;
