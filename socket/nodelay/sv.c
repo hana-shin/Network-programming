@@ -1,41 +1,36 @@
 #include <stdio.h>
 #include <unistd.h>
-#include <string.h>
-#include <netinet/in.h>
+#include <stdlib.h>
+#include <arpa/inet.h>
+#include <netinet/tcp.h>
 
 int main(int argc, char *argv[])
 {
-    int lfd, cfd;
-    socklen_t len;
-    struct sockaddr_in sv, cl;
-    char buf[32];
-    ssize_t n;
+    struct sockaddr_in server;
+    int sock,val;
+    char buf[10]="0123456789";
 
-    lfd = socket(AF_INET, SOCK_STREAM, 0);
+    sock = socket(AF_INET, SOCK_STREAM, 0);
 
-    sv.sin_family = AF_INET;
-    sv.sin_port = htons(11111);
-    sv.sin_addr.s_addr = INADDR_ANY;
+    server.sin_family = AF_INET;
+    server.sin_port = htons(11111);
+    server.sin_addr.s_addr = inet_addr("192.168.3.10");
 
-    bind(lfd, (struct sockaddr *)&sv, sizeof(sv));
-    listen(lfd, 5);
-    memset(buf, 0, sizeof(buf));
-    len = sizeof(cl);
-    cfd = accept(lfd, (struct sockaddr *)&cl, &len);
+    val = atoi(argv[1]);
+    if(val==1)
+        printf("TCP_NODELAY option is ON\n");
+    else
+        printf("TCP_NODELAY option is OFF\n");
 
-    while (1) {
-        n = read(cfd, buf, sizeof(buf));
-        if(n > 0)
-            fprintf(stderr,"%zd bytes received\n", n);
-        else if(n == 0) { //EOF
-            close(cfd);
-            return 0;
-        }
-        else {
-            perror("read");
-            return 1;
-        }
-    }
-    close(lfd);
+    setsockopt(sock, IPPROTO_TCP, TCP_NODELAY, &val, sizeof(val));
+    connect(sock, (struct sockaddr *)&server, sizeof(server));
+
+    write(sock, buf, sizeof(buf));
+    write(sock, buf, sizeof(buf));
+    write(sock, buf, sizeof(buf));
+    write(sock, buf, sizeof(buf));
+    write(sock, buf, sizeof(buf));
+
+    close(sock);
     return 0;
 }
