@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     while (1) {
         n = read(cfd, buf, sizeof(buf));
         if(n > 0)
-            fprintf(stderr,"%zd, %s\n", n, buf);
+            fprintf(stderr,"%zd bytes received\n", n);
         else if(n == 0) { //EOF
             close(cfd);
             return 0;
