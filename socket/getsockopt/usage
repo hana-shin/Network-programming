@@ -1,3 +1,18 @@
+[root@vm4 getsockopt]# ./sv
+10 bytes received
+
 [root@vm3 getsockopt]# ./cl
 SO_RCVBUF:87380,SO_SNDBUF:16384
 SO_RCVBUF:367360,SO_SNDBUF:87040
+
+[root@vm3 ~]# ss -mnt4 'dport == :11111'
+State       Recv-Q Send-Q                        Local Address:Port                                       Peer Address:Port
+ESTAB       0      0                            192.168.122.10:54288                                    192.168.122.20:11111
+         skmem:(r0,rb367360,t0,tb87040,f0,w0,o0,bl0,d0)
+
+[root@vm3 ~]# sysctl -n net.ipv4.tcp_rmem
+4096    87380   6291456
+
+[root@vm3 ~]# sysctl -n net.ipv4.tcp_wmem
+4096    16384   4194304
+
