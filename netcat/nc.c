@@ -13,6 +13,11 @@ int main(int argc, char *argv[])
   char buf[4096];
   struct sockaddr_in server;
 
+  if(argc != 3) {
+    fprintf(stderr, "Usage:./nc IP PORT\n");
+    return 1;
+  }
+
   sock_fd = socket(AF_INET, SOCK_STREAM, 0);
 
   server.sin_family = AF_INET;
