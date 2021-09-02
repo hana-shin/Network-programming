@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stddef.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
+#include <poll.h>
 
 int main(int argc, char *argv[])
 {
@@ -12,6 +14,7 @@ int main(int argc, char *argv[])
   ssize_t n;
   char buf[4096];
   struct sockaddr_in server;
+  struct pollfd *pollFD;
 
   if(argc != 3) {
     fprintf(stderr, "Usage:./nc IP PORT\n");
@@ -24,7 +27,14 @@ int main(int argc, char *argv[])
   server.sin_port = htons(atoi(argv[2]));
   server.sin_addr.s_addr = inet_addr(argv[1]);
 
+  pollFD = calloc(2, sizeof(struct pollfd));
+  pollFD[0].fd = 0;
+  pollFD[0].events = POLLIN;
+
+
   connect(sock_fd, (struct sockaddr *)&server, sizeof(server));
+
+
 
   for(;;) {
     FD_ZERO(&readfds);
