@@ -36,6 +36,7 @@ int main(int argc, char *argv[])
 
     if(pollFD[0].revents & POLLIN) {
       if((n=read(0, buf, sizeof(buf))) < 0) {
+        free(pollFD); 
         perror("read");
         return 1;
       }
@@ -47,6 +48,7 @@ int main(int argc, char *argv[])
 
     if(pollFD[sock_fd].revents & POLLIN) {
       if((n=read(sock_fd, buf, sizeof(buf))) < 0) {
+        free(pollFD); 
         perror("read");
         return 1;
       }
@@ -56,6 +58,7 @@ int main(int argc, char *argv[])
       write(1, buf, n);
     }
   }
+  free(pollFD); 
   shutdown(sock_fd, SHUT_RDWR);
   return 0;
 }
